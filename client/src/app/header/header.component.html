@@ -19,9 +19,9 @@
                 </button>
             </div>
             <!-- ROUTES, DROPDOWN -->
-            <div class="flex-col lg:flex lg:flex-grow lg:flex-row items-center px-4" 
+            <div class="lg:flex lg:flex-grow items-center px-4" 
             [ngClass]="{'hidden': !showMenu, 'flex': showMenu}">
-                <ul class="flex flex-col lg:flex-row list-none ml-auto"
+                <ul class="flex list-none ml-auto"
                 [ngClass]="{'opacity-30': showDropDown, 'opacity-100': !showDropDown}">
                     <li class="nav-item">
                         <a class="nav_link" 
@@ -46,8 +46,9 @@
                         </a>
                         <ul [@manageTransition]="showDropDown ? 'down' : 'up'"
                         [ngClass]="{'hidden': !showDropDown, 'flex': showDropDown}" 
-                        class="lg:flex-col gap-2 lg-gap-0 items-start justify-center absolute left-0 bg-gray-100/90 rounded-md py-3 px-5">
+                        class="lg:flex-col gap-2 lg-gap-0 items-center lg:items-start justify-center lg:absolute lg:left-0 lg:top-[70px] bg-gray-100/90 rounded-md py-1 lg:py-3 px-5">
                             <li ><a class="dd_link" routerLink="#">Save Data</a></li>
+                            <span class="lg:hidden font-bold text-xs cursor-default">or</span>
                             <li><a class="dd_link" routerLink="#">Fetch Data</a></li>
                         </ul>
                     </li>

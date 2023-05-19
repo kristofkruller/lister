@@ -25,7 +25,7 @@ import { trigger, state, style, animate, transition, keyframes } from '@angular/
             'manageTransition', [
             state('down', style({ opacity: 1, transform: "translateX(0)"})),
             state('up', style({ opacity: 0, transform: "translateY(-20px)" })),
-            transition('up <=> down', animate("600ms ease-in-out"))  
+            transition('up <=> down', animate("600ms ease-in-out")),
         ]),
     ],
 })
@@ -35,6 +35,7 @@ export class HeaderComponent {
     showDropDown = false;
     toggleNavbar(){
         this.showMenu = !this.showMenu;
+        if (this.showDropDown) this.showDropDown = !this.showDropDown 
     }
     toggleDropDown(){
         this.showDropDown = !this.showDropDown;
