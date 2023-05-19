@@ -3,40 +3,52 @@
         <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
         
             <!-- TITLE N HAMBU -->
-            <div class="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
+            <div class="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
                 <a class="text-xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-neutral-50" 
                 routerLink="/">
                     Recipe Book
                 </a>
 
-                <button class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" 
+                <button class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent 
+                rounded bg-transparent block lg:hidden outline-none focus:outline-none" 
                 type="button" 
-                (click)="toggleNavbar()"
-                >
-                    <mat-icon class="">menu</mat-icon>
+                (click)="toggleNavbar()">
+                    <mat-icon [@iconTransition]="showMenu ? 'close' : 'menu'">
+                        {{ showMenu ? 'close' : 'menu' }}
+                    </mat-icon>
                 </button>
             </div>
-            <!-- ROUTES -->
-            <div class="lg:flex lg:flex-grow items-center" 
+            <!-- ROUTES, DROPDOWN -->
+            <div class="flex-col lg:flex lg:flex-grow lg:flex-row items-center px-4" 
             [ngClass]="{'hidden': !showMenu, 'flex': showMenu}">
-                <ul class="flex flex-col lg:flex-row list-none ml-auto">
+                <ul class="flex flex-col lg:flex-row list-none ml-auto"
+                [ngClass]="{'opacity-30': showDropDown, 'opacity-100': !showDropDown}">
                     <li class="nav-item">
-                        <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" routerLink="#">
-                            <i class="fab fa-facebook-square text-lg leading-lg text-white opacity-75"></i><span class="ml-2">Recipes</span>
+                        <a class="nav_link" 
+                        [ngClass]="{'pointer-events-none': showDropDown}"
+                        routerLink="#">
+                            Recipes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" routerLink="#">
-                            <i class="fab fa-twitter text-lg leading-lg text-white opacity-75"></i><span class="ml-2">Shopping List</span>
+                        <a class="nav_link" 
+                        [ngClass]="{'pointer-events-none': showDropDown}"
+                        routerLink="#">
+                            Shopping List
                         </a>
                     </li>
                 </ul>
-                <ul class="">
-                    <li (click)="toggleDropDown()">
-                        <a routerLink="#" role="button">Manage <mat-icon></mat-icon></a>
-                        <ul [ngClass]="{'hidden': !showDropDown, 'flex': showDropDown}">
-                            <li><a routerLink="">Save Data</a></li>
-                            <li><a routerLink="">Fetch Data</a></li>
+                <ul class="lg:ml-4 relative list-none self-start">
+                    <li (click)="toggleDropDown()" class="flex">
+                        <a routerLink="#" role="button" class="nav_link">
+                            Manage &nbsp;
+                            <mat-icon [@dropDownTransition]="showDropDown ? 'down' : 'up'">arrow_downward</mat-icon>
+                        </a>
+                        <ul [@manageTransition]="showDropDown ? 'down' : 'up'"
+                        [ngClass]="{'hidden': !showDropDown, 'flex': showDropDown}" 
+                        class="lg:flex-col gap-2 lg-gap-0 items-start justify-center absolute left-0 bg-gray-100/90 rounded-md py-3 px-5">
+                            <li ><a class="dd_link" routerLink="#">Save Data</a></li>
+                            <li><a class="dd_link" routerLink="#">Fetch Data</a></li>
                         </ul>
                     </li>
                 </ul>
