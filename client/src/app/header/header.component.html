@@ -3,12 +3,13 @@
         <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
         
             <!-- TITLE N HAMBU -->
+            <!-- [routerLinkActiveOptions]="{exact: true}" -->
+
             <div class="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
                 <a class="text-xl font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-neutral-50" 
                 routerLink="/">
                     Recipe Book
                 </a>
-
                 <button class="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent 
                 rounded bg-transparent block lg:hidden outline-none focus:outline-none" 
                 type="button" 
@@ -22,18 +23,20 @@
             <div class="lg:flex lg:flex-grow items-center px-4" 
             [ngClass]="{'hidden': !showMenu, 'flex': showMenu}">
                 <ul class="flex list-none ml-auto"
-                [ngClass]="{'opacity-30': showDropDown, 'opacity-100': !showDropDown}">
+                [ngClass]="{'blur-sm': showDropDown, 'blur-none': !showDropDown}">
                     <li class="nav-item">
                         <a class="nav_link" 
+                        routerLinkActive="active_nav"
                         [ngClass]="{'pointer-events-none': showDropDown}"
-                        routerLink="#">
+                        routerLink="recipes">
                             Recipes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav_link" 
+                        <a class="nav_link"
+                        routerLinkActive="active_nav"
                         [ngClass]="{'pointer-events-none': showDropDown}"
-                        routerLink="#">
+                        routerLink="shopping">
                             Shopping List
                         </a>
                     </li>
@@ -47,9 +50,9 @@
                         <ul [@manageTransition]="showDropDown ? 'down' : 'up'"
                         [ngClass]="{'hidden': !showDropDown, 'flex': showDropDown}" 
                         class="lg:flex-col gap-2 lg-gap-0 items-center lg:items-start justify-center lg:absolute lg:left-0 lg:top-[70px] bg-gray-100/90 rounded-md py-1 lg:py-3 px-5">
-                            <li ><a class="dd_link" routerLink="#">Save Data</a></li>
+                            <li ><a class="dd_link" routerLink="save">Save Data</a></li>
                             <span class="lg:hidden font-bold text-xs cursor-default">or</span>
-                            <li><a class="dd_link" routerLink="#">Fetch Data</a></li>
+                            <li><a class="dd_link" routerLink="fetch">Fetch Data</a></li>
                         </ul>
                     </li>
                 </ul>

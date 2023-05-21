@@ -13,6 +13,14 @@ import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-it
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
+
+const AppRouter: Routes = [
+  { path: 'recipes', component: RecipesComponent },
+  { path: 'shopping', component: ShoppingListComponent },
+  // { path: 'fetch', component: "" },
+  // { path: 'save', component: "" },
+];
 
 @NgModule({
   declarations: [
@@ -30,6 +38,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     MatIconModule,
     BrowserAnimationsModule,
+    RouterModule.forRoot(AppRouter)
   ],
   providers: [],
   bootstrap: [AppComponent]
