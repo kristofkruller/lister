@@ -1,1 +1,5 @@
-<p>recipe-item works!</p>
+<a *ngFor="let recipe of recipes; index as i;">
+    <h2>{{recipe.name}}</h2>
+    <p>{{recipe.desc}}</p>
+    <img [src]="recipe.imgPath" alt="image about {{recipe.name}}">
+</a>

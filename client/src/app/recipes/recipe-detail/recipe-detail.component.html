@@ -1,1 +1,24 @@
-<p>recipe-detail works!</p>
+<div>
+    <div class="dropdown-wrapper relative m-8">
+        <button (mouseenter)="toggleDetails()" (mouseleave)="toggleDetails()" 
+        class="bg-purple-500 text-white font-bold py-2 px-4 whitespace-no-wrap rounded">
+            Dropdown
+        </button>
+        <hr>
+        <div [@detailsDrop]="showDetail ? 'open' : 'close'"
+        [ngClass] = "hid ? 'hidden' : 'flex'"
+        class="bg-purple-500 dropdown-menu text-white mt-1 rounded absolute z-10 shadow-lg w-40 max-w-xs">
+            <ul class="list-none overflow-hidden rounded">
+              <li>
+                <a href="#" class="flex py-2 px-4">To shopping list</a>
+                <a href="#" class="flex py-2 px-4">Edit Recipe</a>
+                <a href="#" class="flex py-2 px-4">Delete Recipe</a>
+              </li>
+            </ul>
+        </div>
+    </div>
+    <h1>recipe-detail</h1>
+    <p>desc</p>
+    <p>ingredients</p>
+</div>
+
