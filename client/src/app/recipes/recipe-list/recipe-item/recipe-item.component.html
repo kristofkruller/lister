@@ -1,5 +1,5 @@
-<a *ngFor="let recipe of recipes; index as i;">
+<div (click)="onSelected()" class="cursor-pointer">
     <h2>{{recipe.name}}</h2>
     <p>{{recipe.desc}}</p>
     <img [src]="recipe.imgPath" alt="image about {{recipe.name}}">
-</a>
+</div>

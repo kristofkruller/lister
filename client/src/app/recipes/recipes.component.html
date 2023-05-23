@@ -1,8 +1,16 @@
 <section>
   <div>
-    <app-recipe-list></app-recipe-list>
+    <app-recipe-list
+      (recWasSelected)="selectedRecipe = $event"
+    ></app-recipe-list>
   </div>
   <div>
-    <app-recipe-detail></app-recipe-detail>
+    <app-recipe-detail 
+      *ngIf="selectedRecipe; else infoText"
+      [selectedRec]="selectedRecipe"
+    ></app-recipe-detail>
+    <ng-template #infoText>
+      <p>Please select a recipe</p>
+    </ng-template>
   </div>
 </section>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { trigger, state, style, animate, transition, keyframes } from '@angular/animations';
+import { Component, Input } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { Recipe } from 'src/app/models/recipe.model';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -16,6 +17,9 @@ import { trigger, state, style, animate, transition, keyframes } from '@angular/
   ]
 })
 export class RecipeDetailComponent {
+
+  @Input() selectedRec: Recipe;
+
   showDetail = false;
   hid = true;
   toggleDetails() {
@@ -25,4 +29,5 @@ export class RecipeDetailComponent {
       this.hid = true;
     }, 500);
   }
+
 }

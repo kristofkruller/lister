@@ -17,8 +17,12 @@
             </ul>
         </div>
     </div>
-    <h1>recipe-detail</h1>
-    <p>desc</p>
-    <p>ingredients</p>
+    <div>
+        <img [src]="selectedRec.imgPath" alt={{selectedRec.name}}>
+        <h1>{{selectedRec.name}}</h1>
+        <p>{{selectedRec.desc}}</p>
+        <p>ingredients</p>
+    </div>
+
 </div>
 

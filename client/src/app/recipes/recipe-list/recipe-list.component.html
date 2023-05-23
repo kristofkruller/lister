@@ -1,4 +1,9 @@
 <section>
   <button>New Recipe</button>
-  <app-recipe-item></app-recipe-item>
+  <app-recipe-item 
+    *ngFor="let recipeEl of recipes"
+    [recipe]="recipeEl"
+    (recipeSelected)="onRecSelected(recipeEl)"
+  >
+  </app-recipe-item>
 </section>
